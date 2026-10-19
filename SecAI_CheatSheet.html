@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CompTIA SecAI+ (CY0-001) Cheat Sheet</title>
+<style>
+  @page { size: letter; margin: 10mm; }
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", Arial, sans-serif; color: #1a1a1a; margin: 0; font-size: 8.2px; line-height: 1.32; }
+  h1 { font-size: 15px; margin: 0 0 2px; color: #5b2a86; }
+  .sub { font-size: 8px; color: #555; margin-bottom: 6px; }
+  .cols { column-count: 3; column-gap: 7px; }
+  .box { break-inside: avoid; border: 1px solid #d8cce6; border-radius: 4px; padding: 5px 6px; margin-bottom: 6px; background: #faf7fd; }
+  .box h2 { font-size: 9px; margin: 0 0 3px; color: #5b2a86; border-bottom: 1px solid #e0d4ee; padding-bottom: 2px; }
+  .w { float: right; font-size: 8px; color: #8a6db0; font-weight: normal; }
+  table { width: 100%; border-collapse: collapse; }
+  td { vertical-align: top; padding: 1px 3px 1px 0; }
+  td.k { font-weight: 600; white-space: nowrap; color: #3a1d57; }
+  ul { margin: 2px 0 2px 12px; padding: 0; }
+  li { margin-bottom: 1px; }
+  .tag { display: inline-block; background: #5b2a86; color: #fff; border-radius: 3px; padding: 0 4px; font-size: 7.5px; }
+  .att td.k { color: #9a2b2b; }
+</style>
+</head>
+<body>
+  <h1>CompTIA SecAI+ (CY0-001) — One-Page Cheat Sheet</h1>
+  <div class="sub">60 questions · 60 min · pass 600/900 · Domains: Concepts 17% · Securing AI 40% · AI-Assisted 24% · GRC 19%</div>
+
+  <div class="cols">
+
+    <div class="box">
+      <h2>Domain 1 — Basic AI Concepts <span class="w">17%</span></h2>
+      <table>
+        <tr><td class="k">Transformer</td><td>Self-attention architecture behind LLMs.</td></tr>
+        <tr><td class="k">LLM vs SLM</td><td>Large (general, cloud) vs Small (narrow, on-prem → less leakage).</td></tr>
+        <tr><td class="k">ML types</td><td>Supervised · Unsupervised · Reinforcement.</td></tr>
+        <tr><td class="k">GAN</td><td>Generator vs discriminator → synthetic data / deepfakes.</td></tr>
+        <tr><td class="k">Optimize</td><td>Pruning (drop weights) · Quantization (lower precision) · Epoch (one data pass).</td></tr>
+        <tr><td class="k">Prompting</td><td>Zero/one/multi-shot; system vs user prompt separation.</td></tr>
+        <tr><td class="k">RAG</td><td>Retrieve docs via embeddings in a vector store → inject into prompt; cuts hallucination.</td></tr>
+        <tr><td class="k">Lineage</td><td>Origin/history of data → detects poisoning, proves integrity.</td></tr>
+        <tr><td class="k">HITL</td><td>Human-in-the-loop reviews high-risk AI output.</td></tr>
+      </table>
+      <b>Lifecycle:</b> collect → prep → select → evaluate → deploy → monitor (+ feedback &amp; oversight).
+    </div>
+
+    <div class="box">
+      <h2>Domain 4 — Governance, Risk &amp; Compliance <span class="w">19%</span></h2>
+      <table>
+        <tr><td class="k">EU AI Act</td><td>Risk tiers: Unacceptable (ban) · High · Limited · Minimal.</td></tr>
+        <tr><td class="k">NIST AI RMF</td><td>Functions: <b>Govern · Map · Measure · Manage</b>.</td></tr>
+        <tr><td class="k">ISO 42001</td><td>AI Management System — "ISO 27001 for AI".</td></tr>
+        <tr><td class="k">OECD</td><td>International AI principles.</td></tr>
+        <tr><td class="k">AI CoE</td><td>Center of Excellence sets policy/roles/standards.</td></tr>
+        <tr><td class="k">Shadow AI</td><td>Unsanctioned AI use → leakage, compliance risk.</td></tr>
+      </table>
+      <b>Responsible AI:</b> fairness · reliability/safety · transparency/explainability · privacy · inclusiveness · accountability · training.<br>
+      <b>Also:</b> data sovereignty/residency · private vs public model governance · 3rd-party compliance.
+    </div>
+
+    <div class="box">
+      <h2>Domain 3 — AI-Assisted Security <span class="w">24%</span></h2>
+      <b>Defensive AI:</b> IDE/CLI/browser plugins · chatbots · <b>MCP servers</b> · vuln analysis · automated pentest · anomaly detection · incident automation · fraud detection.<br>
+      <b>AI-enabled attacks:</b> deepfakes (impersonation/disinfo) · automated recon · social-engineering boost · obfuscation · auto payload/malware generation.<br>
+      <b>Automation:</b> low/no-code · IR ticketing · change approvals · deploy/rollback · agent orchestration · CI/CD (code scan, SCA, test).
+    </div>
+
+    <div class="box">
+      <h2>Domain 2 — Controls &amp; Frameworks <span class="w">40%</span></h2>
+      <b>Threat modeling:</b> OWASP LLM Top 10 · OWASP ML Top 10 · MITRE ATLAS · MIT AI Risk Repo · CVE AI WG.<br>
+      <b>Gateway controls:</b> prompt firewall · rate/token limits · input quotas · modality limits · endpoint access.<br>
+      <b>Encryption:</b> in transit · at rest · <b>in use</b> (TEE).<br>
+      <b>Data:</b> anonymize · classify/label · redact/mask · minimize.<br>
+      <b>Least privilege</b> across models · data · agents · APIs · networks.<br>
+      <b>Monitor:</b> log+sanitize prompts/responses · confidence · cost · anomaly · audit hallucination/bias.
+    </div>
+
+    <div class="box att">
+      <h2>Domain 2 — Attacks → Defenses <span class="w">40%</span></h2>
+      <table>
+        <tr><td class="k">Prompt injection</td><td>Malicious input overrides system prompt → firewall, validate, separate prompts, least priv.</td></tr>
+        <tr><td class="k">Data poisoning</td><td>Corrupt training data → provenance, integrity checks, trusted sources.</td></tr>
+        <tr><td class="k">Model poisoning</td><td>Tamper weights → signed models, supply-chain vetting.</td></tr>
+        <tr><td class="k">Jailbreak</td><td>Bypass guardrails → layered guardrails, output filter, red-team.</td></tr>
+        <tr><td class="k">Adversarial (FGSM/PGD)</td><td>Perturbed input → adversarial training, robustness testing.</td></tr>
+        <tr><td class="k">Model inversion</td><td>Rebuild training data → differential privacy, limit confidence.</td></tr>
+        <tr><td class="k">Membership inference</td><td>Was record in training? → diff privacy, less overfit.</td></tr>
+        <tr><td class="k">Model theft</td><td>Clone via queries → rate limit, monitor, watermark.</td></tr>
+        <tr><td class="k">Model DoS</td><td>Resource exhaustion → rate/token/size quotas, cost track.</td></tr>
+        <tr><td class="k">Insecure output</td><td>Unsanitized output → injection; encode/validate downstream.</td></tr>
+        <tr><td class="k">Excessive agency</td><td>Over-permissioned agent → least priv, HITL, scoped tools.</td></tr>
+        <tr><td class="k">Supply chain</td><td>Backdoored model/dep → vet, SCA, signed artifacts.</td></tr>
+        <tr><td class="k">Data disclosure</td><td>Leaks PII → minimize, redact, output filter, RAG access ctrl.</td></tr>
+      </table>
+    </div>
+
+    <div class="box">
+      <h2>Exam tips</h2>
+      <ul>
+        <li>Domain 2 = 40% — master <b>attack ↔ defense</b> pairings.</li>
+        <li>Memorize frameworks cold: <b>EU AI Act tiers</b>, <b>NIST RMF</b> (G/M/M/M), <b>ISO 42001</b>, OWASP LLM Top 10, MITRE ATLAS.</li>
+        <li>Encryption-<b>in-use</b> and <b>least privilege across all AI components</b> are favorite answers.</li>
+        <li>PBQs: pick the <i>right</i> control for a named attack/scenario.</li>
+      </ul>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+#separator:tab
+#html:false
+#tags column:3
+What is a transformer in AI?	A neural-network architecture using self-attention to weigh the importance of each token in a sequence. It is the basis of modern LLMs (GPT, Claude, BERT).	D1_Concepts
+LLM vs SLM — difference and security trade-off?	LLM = Large Language Model (billions of params, general, often cloud/3rd-party). SLM = Small Language Model (fewer params, narrower, can run on-prem/edge). SLMs reduce data-exposure & sovereignty risk; LLMs add capability but more supply-chain/leakage risk.	D1_Concepts
+Name the three core machine-learning paradigms.	1) Supervised (labeled data), 2) Unsupervised (find structure in unlabeled data), 3) Reinforcement (agent learns via reward/penalty feedback).	D1_Concepts
+What is a GAN (Generative Adversarial Network)?	Two competing networks — a generator creating fake data and a discriminator judging real vs fake. Used to create synthetic data and, maliciously, deepfakes.	D1_Concepts
+Define pruning and quantization (model optimization).	Pruning = removing low-importance weights/neurons to shrink a model. Quantization = lowering numeric precision (e.g. FP32→INT8) to reduce size/latency. Both can subtly change behavior and must be re-validated.	D1_Concepts
+What is an epoch in model training?	One complete pass of the entire training dataset through the model. Too few = underfitting; too many = overfitting.	D1_Concepts
+Zero-shot vs one-shot vs multi-shot prompting?	Zero-shot = task instruction with no examples. One-shot = one example provided. Multi-shot (few-shot) = several examples to steer the model's output pattern.	D1_PromptEng
+System prompt vs user prompt?	System prompt sets role, rules, and guardrails (higher trust, set by the app). User prompt is the runtime input (lower trust, where prompt-injection enters). Keeping them separated is a key defense.	D1_PromptEng
+What is RAG (Retrieval-Augmented Generation)?	Technique that retrieves relevant external documents (via embeddings in a vector store) and injects them into the prompt so the LLM answers from current/proprietary data instead of only its training. Reduces hallucination.	D1_RAG
+What are embeddings and a vector store?	Embeddings = numeric vectors representing the semantic meaning of text/data. A vector store (vector DB) indexes them for similarity search. They are the retrieval backbone of RAG.	D1_RAG
+What is data lineage / provenance and why does it matter for AI security?	Lineage/provenance = the documented origin and transformation history of data. It lets you detect poisoned/tampered data, prove integrity, and meet compliance/audit requirements.	D1_Data
+What is watermarking in the AI context?	Embedding a detectable signal into model outputs (or training data) to prove origin, detect AI-generated content, and identify model theft/misuse.	D1_Data
+What is 'human-in-the-loop' and where is it used?	A control where a human reviews/approves AI decisions before action. Used for high-risk outputs, validation, and oversight in the secure AI lifecycle.	D1_Lifecycle
+List the stages of the secure AI lifecycle.	Data collection → preparation → model selection → evaluation → deployment validation → monitoring/maintenance, with feedback loops and human oversight throughout.	D1_Lifecycle
+What is the OWASP LLM Top 10?	OWASP's list of the most critical LLM-application vulnerabilities (e.g. prompt injection, insecure output handling, training-data poisoning, model DoS, supply chain, sensitive info disclosure, excessive agency). Core Domain-2 threat-modeling reference.	D2_Frameworks
+What is MITRE ATLAS?	Adversarial Threat Landscape for AI Systems — a MITRE ATT&CK-style knowledge base of real-world tactics & techniques used to attack ML/AI systems.	D2_Frameworks
+What is the OWASP ML Security Top 10?	OWASP list focused on machine-learning (not just LLM) risks — e.g. input manipulation, data poisoning, model inversion, membership inference, model theft.	D2_Frameworks
+Name 4 AI threat-modeling resources for SecAI+.	OWASP LLM Top 10, OWASP ML Security Top 10, MITRE ATLAS, MIT AI Risk Repository (plus CVE AI Working Group).	D2_Frameworks
+What are gateway controls for AI systems?	Controls at the AI gateway/proxy: prompt firewalls, rate limiting, token limits, input quotas (size & quantity), modality restrictions, and endpoint access controls.	D2_Controls
+What is a prompt firewall / guardrail?	A filtering layer that inspects prompts and responses to block injection, jailbreaks, policy violations, and sensitive-data leakage before/after the model.	D2_Controls
+Encryption states to protect AI data — name all three.	In transit, at rest, and IN USE (e.g. confidential computing / TEEs). SecAI+ emphasizes encryption-in-use for AI workloads.	D2_Controls
+Data-protection mechanisms for AI (besides encryption)?	Anonymization, data classification/labeling, redaction & masking, and data minimization.	D2_Controls
+How does least privilege apply to AI systems?	Enforce minimal access across all AI components: models, data, agents, APIs, and networks — so a compromised prompt/agent can't reach more than it needs.	D2_Controls
+What should AI monitoring/auditing cover?	Prompt/query/response logging (with sanitization & central logging), confidence measurement, cost tracking, access-anomaly detection, and auditing for hallucinations, accuracy, and bias/fairness.	D2_Controls
+Give examples of AI-assisted defensive security tooling.	IDE/browser/CLI plugins, security chatbots/assistants, MCP servers, signature matching, vuln analysis, automated pentest, anomaly/pattern detection, incident automation, fraud detection, summarization/translation.	D3_Defense
+What is MCP (Model Context Protocol) in a security context?	An open protocol letting AI models connect to external tools/data via MCP servers. Security relevance: expands the model's reach — so MCP servers need authz, least privilege, and monitoring.	D3_Defense
+How is AI used to enhance attacks?	Deepfakes (impersonation/disinformation), automated reconnaissance, supercharged social engineering, obfuscation, automated data correlation, and automated generation of payloads/malware variants.	D3_Attacks
+What are deepfakes and their security impact?	AI-generated synthetic audio/video/images used for impersonation, fraud (e.g. CEO voice scams), and disinformation. Defenses: detection tools, watermarking, out-of-band verification, awareness training.	D3_Attacks
+How does AI integrate into CI/CD security?	AI-assisted code scanning, Software Composition Analysis (SCA), automated testing, and agent orchestration in the pipeline — with automated deploy/rollback and change-approval workflows.	D3_Automation
+Risks of low-code/no-code AI automation in security ops?	Speeds up IR ticketing, change approvals, and deployments — but can introduce unreviewed logic, excessive agency, and shadow automation if not governed and least-privileged.	D3_Automation
+What is the EU AI Act and its risk tiers?	EU regulation classifying AI by risk: Unacceptable (banned), High-risk (strict requirements), Limited (transparency obligations), and Minimal. Know the tiers — a common exam item.	D4_Frameworks
+What is the NIST AI RMF?	NIST AI Risk Management Framework — voluntary guidance organized around four functions: GOVERN, MAP, MEASURE, MANAGE — to manage AI risk and promote trustworthy AI.	D4_Frameworks
+What is ISO/IEC 42001?	The international standard for an AI Management System (AIMS) — the 'ISO 27001 for AI' — specifying requirements to govern AI responsibly across its lifecycle.	D4_Frameworks
+Name the key AI governance/compliance frameworks for SecAI+.	EU AI Act, NIST AI RMF, ISO/IEC 42001, OECD AI Principles — plus data sovereignty/residency requirements and third-party compliance evaluations.	D4_Frameworks
+What is an AI Center of Excellence (CoE)?	A central governance body that sets AI policy, standards, roles, and best practices across the organization to ensure responsible, secure, and consistent AI adoption.	D4_Governance
+List the core Responsible AI principles.	Fairness, reliability & safety, transparency & explainability, privacy & security, inclusiveness, accountability, and awareness/training.	D4_Governance
+What is 'shadow AI' and why is it a risk?	Unsanctioned AI tools/usage by staff without IT/security approval. Risks: data leakage, compliance violations, IP exposure, and ungoverned decisions. Counter with policy, sanctioned-tool lists, and monitoring.	D4_Risk
+Key roles in AI governance?	Data scientists, AI/ML architects, MLOps & platform engineers, security architects/engineers, AI governance & risk specialists, audit personnel, and data engineers.	D4_Governance
+Top organizational AI risks to know for Domain 4?	Bias introduction, accidental data leakage, reputational exposure, performance/IP threats, autonomous-system risk, shadow IT, and unauthorized shadow AI.	D4_Risk
+Private vs public model governance — the concern?	Public/3rd-party models risk data leaving the org (sovereignty, leakage, sanctioned-vs-unsanctioned use). Private/self-hosted models give control but need internal security & lifecycle governance.	D4_Risk
+ATTACK: Prompt injection — what is it?	Attacker embeds malicious instructions in user input — or in retrieved data (indirect injection) — to override the system prompt and hijack the model.	D2_Attacks
+DEFENSE: How do you defend against prompt injection?	Prompt firewalls, input validation/filtering, strict system-vs-user prompt separation, guardrails, and least privilege on what the model is allowed to act on.	D2_Defenses
+ATTACK: Data poisoning — what is it?	Attacker corrupts training/fine-tuning data to bias the model or implant a backdoor.	D2_Attacks
+DEFENSE: How do you defend against data poisoning?	Data provenance/lineage, integrity checks, input sanitization, anomaly detection on training data, and trusted data sources.	D2_Defenses
+ATTACK: Model poisoning — what is it?	Tampering with model weights/parameters — often via the supply chain or transfer learning — to implant malicious behavior.	D2_Attacks
+DEFENSE: How do you defend against model poisoning?	Signed/verified models, supply-chain vetting, integrity validation, and trusted model registries.	D2_Defenses
+ATTACK: Jailbreaking — what is it?	Crafted prompts that bypass safety guardrails to elicit prohibited output.	D2_Attacks
+DEFENSE: How do you defend against jailbreaking?	Layered guardrails, output filtering, red-team testing, guardrail validation, and refusal training.	D2_Defenses
+ATTACK: Adversarial examples (FGSM, PGD) — what is it?	Inputs perturbed in small, deliberate (gradient-based) ways to force misclassification. FGSM and PGD are common generation methods.	D2_Attacks
+DEFENSE: How do you defend against adversarial examples (fgsm, pgd)?	Adversarial training, input preprocessing/sanitization, robustness testing, and model ensembling.	D2_Defenses
+ATTACK: Model inversion — what is it?	Attacker reconstructs sensitive training data by repeatedly querying the model and analyzing outputs.	D2_Attacks
+DEFENSE: How do you defend against model inversion?	Differential privacy, limiting output/confidence detail, rate limiting, and data minimization in training.	D2_Defenses
+ATTACK: Membership inference — what is it?	Determining whether a specific record was part of the training set — a privacy leak.	D2_Attacks
+DEFENSE: How do you defend against membership inference?	Differential privacy, regularization to reduce overfitting, and limiting exposure of confidence scores.	D2_Defenses
+ATTACK: Model theft / extraction — what is it?	Cloning a proprietary model by harvesting many query/response pairs.	D2_Attacks
+DEFENSE: How do you defend against model theft / extraction?	Rate/token limiting, query monitoring & anomaly detection, watermarking, and authentication/access controls.	D2_Defenses
+ATTACK: Model DoS — what is it?	Resource-exhausting prompts (huge inputs, recursive or expensive queries) that degrade availability and inflate cost.	D2_Attacks
+DEFENSE: How do you defend against model dos?	Rate limits, token/input-size quotas, cost tracking, and modality restrictions.	D2_Defenses
+ATTACK: Insecure output handling — what is it?	Trusting LLM output and passing it unsanitized into downstream systems (SQL, shell, browser) → injection/XSS/RCE.	D2_Attacks
+DEFENSE: How do you defend against insecure output handling?	Treat all model output as untrusted; encode/validate/sanitize before use; apply least privilege to downstream actions.	D2_Defenses
+ATTACK: Excessive agency / overreliance — what is it?	Giving an AI agent too much autonomy or permission, or humans over-trusting wrong output.	D2_Attacks
+DEFENSE: How do you defend against excessive agency / overreliance?	Least privilege, human-in-the-loop approvals, scoped tool/API access, and output verification.	D2_Defenses
+ATTACK: Supply-chain / transfer-learning attack — what is it?	A malicious pretrained model, dataset, or dependency introduces a hidden backdoor.	D2_Attacks
+DEFENSE: How do you defend against supply-chain / transfer-learning attack?	Vet/verify third-party models & datasets, Software Composition Analysis, signed artifacts, trusted registries, and integrity checks.	D2_Defenses
+ATTACK: Sensitive data disclosure — what is it?	Model reveals secrets/PII from its training data or current context.	D2_Attacks
+DEFENSE: How do you defend against sensitive data disclosure?	Data minimization, redaction/masking, output filtering, RAG access controls, and input classification.	D2_Defenses
